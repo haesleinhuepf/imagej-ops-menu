@@ -1,4 +1,4 @@
-package net.imagej.ops.menu;
+package net.imagej.ops.menu.filter;
 
 import ij.ImagePlus;
 import ij.plugin.frame.Recorder;
@@ -20,7 +20,7 @@ import org.scijava.ui.UIService;
  */
 
 @Plugin(type = Command.class, menuPath = "Ops>Filtering>Gaussian Blur")
-public class GaussianBlurPlugin<T extends RealType<T>> implements Command {
+public class GaussianBlurFilter<T extends RealType<T>> implements Command {
 
 
     @Parameter
