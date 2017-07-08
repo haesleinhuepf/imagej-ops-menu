@@ -1,10 +1,14 @@
-package net.imagej.ops.managedmenu;
+package net.imagej.ops.menu;
 
+import ij.ImagePlus;
 import ij.plugin.frame.Recorder;
 import net.imagej.Dataset;
+import net.imagej.legacy.ImageJLegacyUtilities;
+import net.imagej.legacy.RecorderWrapper;
 import net.imagej.ops.OpService;
 import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.img.Img;
+import net.imglib2.img.display.imagej.ImageJFunctions;
 import net.imglib2.type.numeric.RealType;
 import org.scijava.command.Command;
 import org.scijava.plugin.Parameter;
@@ -15,12 +19,12 @@ import org.scijava.ui.UIService;
  * Created by haase on 7/8/17.
  */
 
-@Plugin(type = Command.class, menuPath = "Ops>Filtering>Gaussian Blur (Ops)")
+@Plugin(type = Command.class, menuPath = "Ops>Filtering>Gaussian Blur")
 public class GaussianBlurPlugin<T extends RealType<T>> implements Command {
 
 
     @Parameter
-    private Dataset currentData;
+    private ImagePlus currentData;
 
     @Parameter
     private UIService uiService;
@@ -34,12 +38,16 @@ public class GaussianBlurPlugin<T extends RealType<T>> implements Command {
     @Override
     public void run() {
 
-        final Img<T> image = (Img<T>)currentData.getImgPlus();
+        Img<T> img = ImageJFunctions.wrapReal(currentData);
 
-        RandomAccessibleInterval<T> result = opService.filter().gauss(image, sigma);
+        RandomAccessibleInterval<T> result = opService.filter().gauss(img, sigma);
 
-        uiService.show(result);
+        ImagePlus imp = ImageJFunctions.wrap(result, "Gaussian blur of " + currentData.getTitle());
 
-        Recorder.record("ops.filter().gauss(image, sigma)");
+        imp = ImageJLegacyUtilities.copyImagePlusProperties(currentData, imp);
+        imp.show();
+
+
+        RecorderWrapper.getInstance().record("ops.filter().gauss(image, sigma);");
     }
 }
