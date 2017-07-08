@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>14.0.0</version>
+		<relativePath />
+	</parent>
+
+	<groupId>net.imagej</groupId>
+	<artifactId>imagej-ops-menu</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name>ImageJ Ops Menu</name>
+	<description>ImageJ Ops Menu. A bridge between Ops, ImageJ and the good old Macro Recorder.</description>
+	<url>http://imagej.net/ImageJ_Ops</url>
+	<inceptionYear>2014</inceptionYear>
+	<organization>
+		<name>ImageJ</name>
+		<url>http://imagej.net/</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Simplified BSD License</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>haesleinhuepf</id>
+			<name>Robert Haase</name>
+			<url>http://github.com/haesleinhuepf</url>
+			<roles>
+				<role>founder</role>
+				<role>lead</role>
+				<role>developer</role>
+				<role>debugger</role>
+				<role>reviewer</role>
+				<role>support</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+            <name>none</name>
+        </contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>ImageJ Forum</name>
+			<archive>http://forum.imagej.net/</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:git://github.com/haesleinhuepf/imagej-ops-menu</connection>
+		<developerConnection>scm:git:git@github.com:haesleinhuepf/imagej-ops-menu</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/haesleinhuepf/imagej-ops-menu</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/haesleinhuepf/imagej-ops-menu/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/haesleinhuepf/imagej-ops</url>
+	</ciManagement>
+
+	<properties>
+		<package-name>net.imagej.ops-menu</package-name>
+		<main-class>net.imagej.ops.Main</main-class>
+		<license.licenseName>bsd_2</license.licenseName>
+		<license.copyrightOwners>Robert Haase</license.copyrightOwners>
+		<license.projectName>ImageJ software for multidimensional image processing and analysis.</license.projectName>
+		<imglib2.version>4.2.1</imglib2.version>
+		<scifio.version>0.32.0</scifio.version>
+		<imagej.app.directory>/home/haase/applications/Fiji.app</imagej.app.directory>
+
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>imagej.public</id>
+			<url>https://maven.imagej.net/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>imagej-ops</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+		</dependency>
+	</dependencies>
+</project>
