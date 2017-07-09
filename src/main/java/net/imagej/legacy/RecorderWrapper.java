@@ -61,8 +61,8 @@ public class RecorderWrapper {
     public static RecorderWrapper getInstance() {
         if (instance == null) {
             instance = new RecorderWrapper();
-            instance.initialize();
         }
+        instance.initialize();
         return instance;
     }
 
@@ -72,7 +72,6 @@ public class RecorderWrapper {
         }
 
         recorder.record(command + "\n" + placeHolder);
-
 
 
         timer.start();
