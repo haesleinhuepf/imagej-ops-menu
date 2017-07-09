@@ -32,22 +32,21 @@ public class GaussianBlurFilter<T extends RealType<T>> implements Command {
     @Parameter
     private OpService opService;
 
-    @Parameter
+    @Parameter(label = "sigma in pixels")
     private double sigma;
 
     @Override
     public void run() {
 
-        Img<T> img = ImageJFunctions.wrapReal(currentData);
+        Img<T> input = ImageJFunctions.wrapReal(currentData);
 
-        RandomAccessibleInterval<T> result = opService.filter().gauss(img, sigma);
+        RandomAccessibleInterval<T> output = opService.filter().gauss(input, sigma);
 
-        ImagePlus imp = ImageJFunctions.wrap(result, "Gaussian blur of " + currentData.getTitle());
+        ImagePlus imp = ImageJFunctions.wrap(output, "Gaussian blur (sigmal = " + sigma + ") of " + currentData.getTitle());
 
         imp = ImageJLegacyUtilities.copyImagePlusProperties(currentData, imp);
         imp.show();
 
-
-        RecorderWrapper.getInstance().record("ops.filter().gauss(image, sigma);");
+        RecorderWrapper.getInstance().record("gaussianBlurredImage = ops.filter().gauss(image, sigma);");
     }
 }
