@@ -4,6 +4,7 @@ import ij.ImagePlus;
 import net.imagej.legacy.ImageJLegacyUtilities;
 import net.imagej.legacy.RecorderWrapper;
 import net.imagej.ops.OpService;
+import net.imagej.ops.create.img.Imgs;
 import net.imagej.ops.menu.core.OpsMenuUtilities;
 import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.algorithm.neighborhood.CenteredRectangleShape;
@@ -41,7 +42,7 @@ public class MeanFilter<T extends RealType<T>> implements Command {
 
         Img<T> input = ImageJFunctions.wrapReal(currentData);
 
-        Img<DoubleType> output = opService.create().img(input);
+        Img<T> output = Imgs.create(input.factory(), input, input.firstElement());
 
         Shape shape = OpsMenuUtilities.rectangleShape(input.numDimensions(), radius, false);
 
