@@ -16,6 +16,7 @@ public class RecorderWrapper {
     Recorder recorder;
     TextArea textArea;
     Timer timer;
+    String cache = "";
 
     private final String placeHolder = "##MARKER##";
 
@@ -70,12 +71,24 @@ public class RecorderWrapper {
         if (recorder == null || recorder.recordInMacros) {
             return;
         }
-
+        System.out.println("recording ... " + command);
+        cache += command + "\n";
         recorder.record(command + "\n" + placeHolder);
 
 
         timer.start();
 
+    }
+
+    public void clear() {
+        if (textArea != null) {
+            textArea.setText("");
+            cache = "";
+        }
+    }
+
+    public String getRecordings() {
+        return cache;
     }
 
 }
