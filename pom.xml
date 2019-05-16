@@ -15,11 +15,11 @@
 
 	<name>ImageJ Ops Menu</name>
 	<description>ImageJ Ops Menu. A bridge between Ops, ImageJ and the good old Macro Recorder.</description>
-	<url>http://imagej.net/ImageJ_Ops</url>
+	<url>https://imagej.net/ImageJ_Ops</url>
 	<inceptionYear>2014</inceptionYear>
 	<organization>
 		<name>ImageJ</name>
-		<url>http://imagej.net/</url>
+		<url>https://imagej.net/</url>
 	</organization>
 	<licenses>
 		<license>
